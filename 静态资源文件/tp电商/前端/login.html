@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>登录页面</title>
+	<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://cdn.bootcss.com/normalize/8.0.0/normalize.min.css" rel="stylesheet">
+	<style>
+		a {
+			text-decoration: none;
+
+		}
+		li {
+			display: inline-block;
+			list-style: none;
+		}
+		.wrapper {
+			overflow: hidden;
+		}
+		.header {
+			height: 10%;
+			padding-top: 15px;
+			padding-bottom: 15px;
+			border-bottom: 1px solid rgba(0,0,0,.1);
+		}
+		.nav-left span{
+			font-size: 18px;
+			font-weight: bold;
+		}
+		.nav-right {
+			padding-top: 10px;
+		}
+		.nav-right span{
+			margin: 5px;
+		}
+		.nav-right button {
+			width: 60px;
+			background-color: #F0F0F0;
+			box-shadow: 2px 2px 1px rgba(0,0,0,.3);
+			font-weight: bold;
+		}
+		.divider {
+			margin:0 15px;
+			width:1px;
+			height: 20px;
+			border-left: 1px solid rgba(0,0,0,.3);
+		}
+		.login-content {
+			background: #E0FFFF;
+			padding-top: 100px;
+			padding-bottom: 100px;
+			height: 60%;
+		}
+		.login-box {
+			width: 300px;
+			height: 250px;
+			border: 1px solid rgba(0,0,0,0.1);
+			background: #fff;
+			padding: 10px 20px 0px;
+		}
+		.login-box h2 {
+			font-size: 18px;
+			font-weight: bold;
+			margin: 10px 0 20px 10px;
+		}
+		.login-box button {
+			margin-top: 30px;
+			color: #fff;
+			font-size:16px;
+			background-color: #FF34B3;
+		}
+		.input-group {
+			margin-bottom: 15px;
+		}
+		.input-group-addon {
+			width: 50px;
+		}
+		.footer {
+			height: 30%;
+			margin-top: 10px;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="header row">
+			<div class="col-md-4 col-md-offset-1 nav-left">
+				<img src="images/logo.png" width="150" height="45">
+				<span class="divider"></span>
+				<span>登录</span>
+			</div>
+			<div class="nav-right col-md-3 col-md-offset-4">
+				<span>还没有o2o团购账号</span>
+				<button class="btn btn-sm">注册</button>
+			</div>
+		</div>
+		<div class="login-content row">
+			<div class="login-box col-md-offset-8">
+				<h2>现在登录</h2>
+				<form>
+					<div class="input-group">
+						<span class="input-group-addon glyphicon glyphicon-user"></span>
+						<input type="text" name="username" class="form-control" placeholder="用户名" required="">
+					</div>
+					<div class="input-group">
+						<span class="input-group-addon glyphicon glyphicon-lock"></span>
+						<input type="password" name="password" class="form-control" placeholder="密码" required="">
+					</div>
+					<button class="btn btn-block">登录</button>
+				</form>
+			</div>
+		</div>
+		<div class="footer">
+			<ul class="link col-md-offset-2">
+				<li><a href="#">关于糯米</a></li>
+				<li class="divider"></li>
+				<li><a href="#">常见问题</a></li>
+				<li class="divider"></li>
+				<li><a href="#">违规投诉</a></li>
+				<li class="divider"></li>
+				<li><a href="#">开放平台</a></li>
+				<li class="divider"></li>
+				<li><a href="#">用户协议</a></li>
+				<li class="divider"></li>
+				<li >客服电话：400-9216-666（每天9:00 - 22:00）</li>
+			</ul>
+			<div class="site-info col-md-offset-4">
+				©2015 nuomi.com 京ICP证030173号  京公网安备11010802014106号
+			</div>
+		</div>
+	</div>
+</body>
+</html>

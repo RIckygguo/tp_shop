@@ -1,0 +1,188 @@
+## 表的设计
+
+#生活服务分类表
+CREATE TABLE o2o_category (
+	id INT(11) NOT NULL AUTO_INCREMENT,
+	name VARCHAR(50) NOT NULL UNIQUE DEFAULT '',
+	parent_id INT(11) UNSIGNED NOT NULL DEFAULT 0,
+	list_order INT(8) UNSIGNED NOT NULL DEFAULT 0,
+	status TINYINT(1) NOT NULL DEFAULT 0,
+	create_time INT(11) UNSIGNED NOT NULL DEFAULT 0,
+	update_time INT(11) UNSIGNED NOT NULL DEFAULT 0,
+	PRIMARY KEY('id'),
+	KEY parent_id('parent_id')
+)DEFAULT CHARSET=utf8;
+
+#城市表
+CREATE TABLE 'o2o_city' (
+	'id' INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+	'name' VARCHAR(50) NOT NULL UNIQUE DEFAULT '',
+	'uname' VARCHAR(50) NOT NULL UNIQUE DEFAULT '', /*城市英文名*/
+	'parent_id' INT(11) UNSIGNED NOT NULL DEFAULT 0,
+	'list_order' INT(8) UNSIGNED NOT NULL DEFAULT 0,
+	'status' TINYINT(1) NOT NULL DEFAULT 0,
+	'create_time' INT(11) UNSIGNED NOT NULL DEFAULT 0,
+	'update_time' INT(11) UNSIGNED NOT NULL DEFAULT 0,
+	PRIMARY KEY('id'),
+	KEY parent_id('parent_id'),
+	UNIQUE KEY uname('uname')
+)DEFAULT CHARSET=utf8;
+
+#商圈表
+CREATE TABLE 'o2o_area' (
+	'id' INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+	'name' VARCHAR(50) NOT NULL UNIQUE DEFAULT '',
+	'city_id' INT(11) UNSIGNED NOT NULL DEFAULT 0,
+	'parent_id' INT(11) UNSIGNED NOT NULL DEFAULT 0,
+	'list_order' INT(8) UNSIGNED NOT NULL DEFAULT 0,
+	'status' TINYINT(1) NOT NULL DEFAULT 0,
+	'create_time' INT(11) UNSIGNED NOT NULL DEFAULT 0,
+	'update_time' INT(11) UNSIGNED NOT NULL DEFAULT 0,
+	PRIMARY KEY('id'),
+	KEY parent_id('parent_id'),
+	KEY city_id('city_id')
+)DEFAULT CHARSET=utf8;
+
+#商户表
+CREATE TABLE 'o2o_shop' (
+	'id' INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+	'name' VARCHAR(50) NOT NULL UNIQUE DEFAULT '',
+	'email' VARCHAR(50) NOT NULL DEFAULT '',
+	'logo' VARCHAR(255) NOT NULL DEFAULT '',
+	'licence' VARCHAR(255) NOT NULL DEFAULT '',
+	'description' TEXT NOT NULL,
+	'city_id' INT(11) UNSIGNED NOT NULL DEFAULT 0,
+	'city_path' VARCHAR(255) NOT NULL DEFAULT '',
+	'bank_info' VARCHAR(50) NOT NULL DEFAULT '',
+	'bank_name' VARCHAR(50) NOT NULL DEFAULT '',
+	'bank_user' VARCHAR(50) NOT NULL DEFAULT '',
+	'money' DECIMAL(20,2) NOT NULL DEFAULT '0.00',
+	'responser' VARCHAR(50) NOT NULL DEFAULT '',
+	'responser_tel' VARCHAR(20) NOT NULL DEFAULT '',
+	'list_order' INT(8) UNSIGNED NOT NULL DEFAULT 0,
+	'status' TINYINT(1) NOT NULL DEFAULT 0,
+	'create_time' INT(11) UNSIGNED NOT NULL DEFAULT 0,
+	'update_time' INT(11) UNSIGNED NOT NULL DEFAULT 0,
+	PRIMARY KEY('id'),
+	KEY city_id('city_id'),
+	KEY name('name')
+)DEFAULT CHARSET=utf8;
+
+#商户账号表
+CREATE TABLE 'o2o_shopper' (
+	'id' INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+	'username' VARCHAR(50) NOT NULL UNIQUE DEFAULT '',
+	'password' CHAR(32) NOT NULL DEFAULT '',
+	'code' VARCHAR(10) NOT NULL DEFAULT '',
+	'shop_id' INT(11) UNSIGNED NOT NULL ,
+	'last_login_ip' VARCHAR(20) NOT NULL DEFAULT '',
+	'last_login_time' INT(11) NOT NULL DEFAULT 0,
+	'is_main' TINYINT(1) NOT NULL DEFAULT 0,
+	'list_order' INT(8) UNSIGNED NOT NULL DEFAULT 0,
+	'status' TINYINT(1) NOT NULL DEFAULT 0,
+	'create_time' INT(11) UNSIGNED NOT NULL DEFAULT 0,
+	'update_time' INT(11) UNSIGNED NOT NULL DEFAULT 0,
+	PRIMARY KEY('id'),
+	KEY shop_id('shop_id'),
+	KEY username('username')
+)DEFAULT CHARSET=utf8;
+
+#商户门店表
+CREATE TABLE 'o2o_shop_location' (
+	'id' INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+	'name' VARCHAR(50) NOT NULL UNIQUE DEFAULT '',
+	'logo' VARCHAR(255) NOT NULL DEFAULT '',
+	'address' VARCHAR(255) NOT NULL DEFAULT '',
+	'tel' VARCHAR(20) NOT NULL DEFAULT '',
+	'contact' VARCHAR(20) NOT NULL DEFAULT '',
+	'xpoint' VARCHAR(20) NOT NULL DEFAULT '',
+	'ypoint' VARCHAR(20) NOT NULL DEFAULT '',
+	'shop_id' INT(11) UNSIGNED NOT NULL ,
+	'open_time' VARCHAR(50) NOT NULL DEFAULT '',
+	'description' TEXT NOT NULL,
+	'is_main' TINYINT(1) NOT NULL DEFAULT 0,
+	'city_id' INT(11) UNSIGNED NOT NULL DEFAULT 0,
+	'city_path' VARCHAR(255) NOT NULL DEFAULT '',
+	'cate_id' INT(11) UNSIGNED NOT NULL ,
+	'cate_path' VARCHAR(50) NOT NULL DEFAULT '',
+	'list_order' INT(8) UNSIGNED NOT NULL DEFAULT 0,
+	'status' TINYINT(1) NOT NULL DEFAULT 0,
+	'create_time' INT(11) UNSIGNED NOT NULL DEFAULT 0,
+	'update_time' INT(11) UNSIGNED NOT NULL DEFAULT 0,
+	PRIMARY KEY('id'),
+	KEY city_id('city_id'),
+	KEY shop_id('shop_id'),
+	KEY cate_id('cate_id'),
+	KEY name('name')
+)DEFAULT CHARSET=utf8;
+
+#团购商品表
+CREATE TABLE 'o2o_deal' (
+	'id' INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+	'name' VARCHAR(50) NOT NULL  DEFAULT '',
+	'shop_id' INT(11) UNSIGNED NOT NULL ,
+	'shop_location_id' VARCHAR(100) NOT NULL DEFAULT '',
+	'image' VARCHAR(200) NOT NULL DEFAULT '',
+	'description' TEXT NOT NULL,
+	'start_time' INT(11) NOT NULL DEFAULT 0,
+	'end_time' INT(11) NOT NULL DEFAULT 0,
+	'origin_price' DECIMAL(20,2) NOT NULL DEFAULT 0.00,
+	'current_price' DECIMAL(20,2) NOT NULL DEFAULT 0.00,
+	'city_id' INT(11) UNSIGNED NOT NULL DEFAULT 0,
+	'city_path' VARCHAR(255) NOT NULL DEFAULT '',
+	'buy_count' INT(11) NOT NULL DEFAULT 0,
+	'total_count' INT(11) NOT NULL DEFAULT 0,
+	'coupons_start_time' INT(11) NOT NULL DEFAULT 0,
+	'coupons_end_time' INT(11) NOT NULL DEFAULT 0,
+	'xpoint' VARCHAR(20) NOT NULL DEFAULT '',
+	'ypoint' VARCHAR(20) NOT NULL DEFAULT '',
+	'shopper_id' INT(11) UNSIGNED NOT NULL DEFAULT 0,
+	'balance_price' DECIMAL(20,2) NOT NULL DEFAULT 0.00,
+	'notes' TEXT NOT NULL,
+	'cate_id' INT(11) UNSIGNED NOT NULL ,
+	'se_cate_id' INT(11) UNSIGNED NOT NULL ,
+	'list_order' INT(8) UNSIGNED NOT NULL DEFAULT 0,
+	'status' TINYINT(1) NOT NULL DEFAULT 0,
+	'create_time' INT(11) UNSIGNED NOT NULL DEFAULT 0,
+	'update_time' INT(11) UNSIGNED NOT NULL DEFAULT 0,
+	PRIMARY KEY('id'),
+	KEY city_id('city_id'),
+	KEY shop_id('shop_id'),
+	KEY cate_id('cate_id'),
+	KEY se_cate_id('se_cate_id'),
+	KEY start_time('start_time'),
+	KEY end_time('end_time')
+)DEFAULT CHARSET=utf8;
+
+#会员表
+CREATE TABLE 'o2o_user' (
+	'id' INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+	'username' VARCHAR(50) NOT NULL UNIQUE DEFAULT '',
+	'password' CHAR(32) NOT NULL DEFAULT '',
+	'email' VARCHAR(50) NOT NULL UNIQUE DEFAULT '',
+	'mobile' VARCHAR(30) NOT NULL DEFAULT '',
+	'code' VARCHAR(10) NOT NULL DEFAULT '',
+	'last_login_ip' VARCHAR(20) NOT NULL DEFAULT '',
+	'last_login_time' INT(11) NOT NULL DEFAULT 0,
+	'list_order' INT(8) UNSIGNED NOT NULL DEFAULT 0,
+	'status' TINYINT(1) NOT NULL DEFAULT 0,
+	'create_time' INT(11) UNSIGNED NOT NULL DEFAULT 0,
+	'update_time' INT(11) UNSIGNED NOT NULL DEFAULT 0,
+	PRIMARY KEY('id'),
+	KEY username('username')
+)DEFAULT CHARSET=utf8;
+
+#推荐位
+CREATE TABLE 'o2o_introduce' (
+	'id' INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+	'type' TINYINT(1) NOT NULL DEFAULT 0,
+	'title' VARCHAR(50) NOT NULL UNIQUE DEFAULT '',
+	'image' CHAR(255) NOT NULL DEFAULT '',
+	'url' VARCHAR(255) NOT NULL  DEFAULT '',
+	'description' VARCHAR(255) NOT NULL DEFAULT '',
+	'list_order' INT(8) UNSIGNED NOT NULL DEFAULT 0,
+	'status' TINYINT(1) NOT NULL DEFAULT 0,
+	'create_time' INT(11) UNSIGNED NOT NULL DEFAULT 0,
+	'update_time' INT(11) UNSIGNED NOT NULL DEFAULT 0,
+	PRIMARY KEY('id')
+)DEFAULT CHARSET=utf8;

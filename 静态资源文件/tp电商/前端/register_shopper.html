@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>商户注册页面</title>
+	<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://cdn.bootcss.com/normalize/8.0.0/normalize.min.css" rel="stylesheet">
+	<style type="text/css">
+		.header {
+			height: 10%;
+			padding-top: 15px;
+			padding-bottom: 15px;
+			border-bottom: 1px solid rgba(0,0,0,.1);
+		}
+		.divider {
+			margin:0 15px;
+			width:1px;
+			height: 20px;
+			border-left: 1px solid rgba(0,0,0,.3);
+		}
+		.nav-left span {
+			font-size:18px;
+			font-weight: bold;
+		}
+		.content h2 {
+			width:100%;
+			height: 60px;
+			background-color: #E0FFFF;
+			margin:0;
+			padding:15px;
+		}
+		.c-red {
+			color: red;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="header row">
+			<div class="col-md-4 col-md-offset-1 nav-left">
+				<img src="images/logo.png" width="150" height="45">
+				<span class="divider"></span>
+				<span>商户入驻申请</span>
+			</div>
+		</div>
+		<div class="content row">
+			<h2>基本信息</h2>
+			<form class="form-horizontal">
+				<div class="form-group">
+					<label class="control-label col-md-3" for="name"><span class="c-red">*</span>商户名称：</label>
+					<div class="col-md-4">
+						<input type="text" name="name" required="" class="form-control">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-md-3" for="city"><span class="c-red">*</span>所属城市：</label>
+					<div class="col-md-3">
+							<select name="city_id" class="form-control">
+								<option value="0">--请选择--</option>
+								<option value="1">北京市</option>
+							</select>
+					</div>
+					<div class="col-md-3">
+							<select name="se_city_id" class="form-control">
+								<option value="0">--请选择--</option>
+								<option value="1">北京市</option>
+							</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-md-3" for="name"><span class="c-red">*</span>商户LOGO：</label>
+					<div class="col-md-4">
+						<input type="file" name="logo" id="logo_upload">
+						<div style="display: none;">
+							<img src="" id="upload_logo_img" width="150" height="150">
+							<span class="help-block">缩略图</span>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-md-3" for="name"><span class="c-red">*</span>营业执照：</label>
+					<div class="col-md-4">
+						<input type="text" name="name" required="" class="form-control">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-md-3" for="name"><span class="c-red">*</span>商户介绍：</label>
+					<div class="col-md-4">
+						<input type="text" name="name" required="" class="form-control">
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

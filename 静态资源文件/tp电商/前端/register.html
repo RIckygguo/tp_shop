@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>注册页面</title>
+	<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://cdn.bootcss.com/normalize/8.0.0/normalize.min.css" rel="stylesheet">
+	<style>
+		body {
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+		}
+		a {
+			text-decoration: none;
+
+		}
+		li {
+			display: inline-block;
+			list-style: none;
+		}
+		.header {
+			height: 10%;
+			padding-top: 15px;
+			padding-bottom: 15px;
+			border-bottom: 1px solid rgba(0,0,0,.1);
+		}
+		.nav-left span{
+			font-size: 18px;
+			font-weight: bold;
+		}
+		.nav-right {
+			padding-top: 10px;
+		}
+		.nav-right span{
+			margin: 5px;
+		}
+		.nav-right button {
+			width: 60px;
+			background-color: #F0F0F0;
+			box-shadow: 2px 2px 1px rgba(0,0,0,.3);
+			font-weight: bold;
+		}
+		.divider {
+			margin:0 15px;
+			width:1px;
+			height: 20px;
+			border-left: 1px solid rgba(0,0,0,.3);
+		}
+		.content {
+			width: 100%;
+			height: 60%;
+			border: 1px solid blue;
+		}
+		.left {
+			border: 1px solid red;
+			width : 70%;
+		}
+		.left form {
+			margin-top: 50px;
+		}
+		.left label {
+			display: inline-block;
+			width:60px;
+			margin-left: 10px;
+		}
+		.left input {
+			display: inline-block;
+			margin-bottom: 20px;
+			padding: 5px;
+			font-size: 16px;
+		}
+		.left button {
+			margin-left: 20px;
+			width:250px;
+			height: 40px;
+			color: #fff;
+			background: #FF34B3;
+		}
+		.footer {
+			height: 30%;
+			margin-top: 10px;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="header row">
+				<div class="col-md-4 col-md-offset-1 nav-left">
+					<img src="images/logo.png" width="150" height="45">
+					<span class="divider"></span>
+					<span>注册账号</span>
+				</div>
+				<div class="nav-right col-md-3 col-md-offset-4">
+					<span>我已注册，现在就</span>
+					<button class="btn btn-sm">登录</button>
+				</div>
+		</div>
+		<div class="content">
+			<div class="left">
+				<form class="col-md-offset-2">
+					<label>用户名</label>
+					<input type="text" name="username" placeholder="用户名" required=""><br>
+					<label>手机号</label>
+					<input type="text" name="tel" placeholder="手机号" required=""><br>
+					<label>密码</label>
+					<input type="password" name="password" required=""><br>
+					<button class="btn btn-lg">注册</button>
+				</form>
+			</div>
+			<div class="right">
+				
+			</div>
+		</div>
+		<div class="footer">
+			<ul class="link col-md-offset-2">
+				<li><a href="#">关于糯米</a></li>
+				<li class="divider"></li>
+				<li><a href="#">常见问题</a></li>
+				<li class="divider"></li>
+				<li><a href="#">违规投诉</a></li>
+				<li class="divider"></li>
+				<li><a href="#">开放平台</a></li>
+				<li class="divider"></li>
+				<li><a href="#">用户协议</a></li>
+				<li class="divider"></li>
+				<li >客服电话：400-9216-666（每天9:00 - 22:00）</li>
+			</ul>
+			<div class="site-info col-md-offset-4">
+				©2015 nuomi.com 京ICP证030173号  京公网安备11010802014106号
+			</div>
+		</div>
+	</div>
+</body>
+</html>
