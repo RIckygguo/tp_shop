@@ -23,7 +23,24 @@ class City extends Model {
 		];
 		return $this->where($data)->order($order)->paginate(7);
 	}
-
+	/**
+	 * Function: getAllCity
+	 * Writer: RickyGuo
+	 * Date: 2018-4-3
+	 * Description: 获取所有城市
+	 * @param 
+	 **/
+	public function getAllCity($parent_id = 0) {
+		$data = [
+			'parent_id' => $parent_id,
+			'status'	=> 1,
+		];
+		$order = [
+			'list_order' => 'desc',
+			'id' => 'desc',
+		];
+		return $this->where($data)->order($order)->select();
+	}
 	/**
 	 * Function: getSelectCity
 	 * Writer: RickyGuo

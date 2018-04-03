@@ -42,6 +42,18 @@ class Category extends Model
 	//获取所有分类
 	public function getAllCate($parent_id = 0) {
 		$order = [
+			'list_order' => 'desc',
+			'id' => 'desc',
+		];
+		$where = [
+			'parent_id' => $parent_id,
+			'status'	=> 1,
+		];
+		return $this->where($where)->order($order)->select();
+	}
+
+	public function getCate($parent_id = 0) {
+		$order = [
 			'status' => 'desc',
 			'list_order' => 'desc',
 			'id' => 'desc',

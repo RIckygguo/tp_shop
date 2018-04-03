@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:78:"D:\xampp\htdocs\tp_shop\public/../application/shopper\view\register\index.html";i:1522766855;s:77:"D:\xampp\htdocs\tp_shop\public/../application/shopper\view\Public\header.html";i:1522766184;s:77:"D:\xampp\htdocs\tp_shop\public/../application/shopper\view\Public\footer.html";i:1521010733;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:78:"D:\xampp\htdocs\tp_shop\public/../application/shopper\view\register\index.html";i:1522771403;s:77:"D:\xampp\htdocs\tp_shop\public/../application/shopper\view\Public\header.html";i:1522766184;s:77:"D:\xampp\htdocs\tp_shop\public/../application/shopper\view\Public\footer.html";i:1522769662;}*/ ?>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -84,27 +84,31 @@
 				<div class="form-group">
 					<label class="control-label col-md-3" for="city"><span class="c-red">*</span>所属城市：</label>
 					<div class="col-md-3">
-						<select name="city_id" class="form-control">
+						<select name="city_id" class="form-control" id="city_id">
 							<option value="0">--请选择--</option>
-							<option value="1">北京市</option>
+							<?php if(is_array($citys) || $citys instanceof \think\Collection): $i = 0; $__LIST__ = $citys;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?> 
+							<option value="<?php echo $vo['id']; ?>"><?php echo $vo['name']; ?></option>
+							<?php endforeach; endif; else: echo "" ;endif; ?>
 						</select>
 					</div>
 					<div class="col-md-3">
-						<select name="se_city_id" class="form-control">
+						<select name="se_city_id" class="form-control" id="se_city_id">
 							<option value="0">--请选择--</option>
-							<option value="1">北京市</option>
 						</select>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class= "control-label col-md-3" for="cate"><span class="c-red">*</span>商店分类：</label>
 					<div class="col-md-3">
-						<select name="cate_id" class="form-control">
+						<select name="cate_id" class="form-control" id="cate_id">
 							<option value="0">--请选择--</option>
+							<?php if(is_array($cates) || $cates instanceof \think\Collection): $i = 0; $__LIST__ = $cates;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+							<option value="<?php echo $vo['id']; ?>"><?php echo $vo['name']; ?></option>
+							<?php endforeach; endif; else: echo "" ;endif; ?>
 						</select>
 					</div>
 					<div class="col-md-3">
-						<select name="se_cate_id" class="form-control">
+						<select name="se_cate_id" class="form-control" id="se_cate_id">
 							<option value="0">--请选择--</option>
 						</select>
 					</div>
@@ -232,8 +236,16 @@
 <script type="text/javascript" src="__STATIC__/admin/hui/lib/layer/2.4/layer.js"></script>
 <script type="text/javascript" src="__STATIC__/admin/hui/static/h-ui/js/H-ui.min.js"></script>
 <script type="text/javascript" src="__STATIC__/admin/hui/static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
+<script src="__STATIC__/shopper/common.js"></script>
+
 	<script type="text/javascript" src="__STATIC__/ueditor/ueditor.config.js"></script>
 	<script type="text/javascript" src="__STATIC__/ueditor/ueditor.all.js"></script>
+	<script>
+		var SCOPE = {
+			city_url : "<?php echo url('api/City/getCity'); ?>",
+			cate_url : "<?php echo url('api/Category/getCate'); ?>",
+		}
+	</script>
 	<script type="text/javascript">
 		$(function(){
 			var ue1 = UE.getEditor('editor1', {

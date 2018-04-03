@@ -12,7 +12,7 @@ class Category extends Controller {
 	//返回分类列表页
 	public function index() {
 		$parentId = input('get.parent_id', 0, 'intval');
-		$cate = $this->db->getAllCate($parentId);
+		$cate = $this->db->getCate($parentId);
 		$count = $this->db->getCount($parentId);
 		$this->assign('cate', $cate);
 		$this->assign('count', $count);
