@@ -144,6 +144,30 @@ CURLOPT_POSTFIELDS	全部数据使用HTTP协议中的 "POST" 操作来发送。 
 需要注意的是，当选择一次父级选择框后，再选取另一记录时，应该把之前的内容去除。
 后台接口可以单独用一个模块api管理。
 
+图片上传处理：
+前端插件：uploadify
+下载后放置静态资源目录，然后修改一下css中的含有png的代码，更换一下目录。然后引入css和js
+编写image.js：
+调用uploadify的方法，然后设置里面的属性，还有成功的回调方法，失败的回调方法。
+详情看uploadify的文档
+http://www.uploadify.com/documentation/
+需要设置的属性
+fileObjName 文件名
+fileTypeExts 文件拓展名
+fileTypeDesc 文件描述
+buttonText  将input的file按钮更换，设置按钮文字
+swf 上传动画
+uploader 后台上传接口
+
+回调方法：
+成功时：
+将数据获取一下，然后将图片地址返回给前端
+一是图片缩略图，第二是设置下该隐藏域的input（用于上传表单用），第三显示图片缩略图
+
+
+编写图片上传api接口实现图片异步上传
+使用think自带的类库Request、File
+用request的file获取上传文件，然后在用move移动到指定目录，然后返回目录路径
 
 关于复用：
 所有复用的js，css代码放在public/static/下的js/common.js和css/common.css

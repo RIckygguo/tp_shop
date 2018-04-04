@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:78:"D:\xampp\htdocs\tp_shop\public/../application/shopper\view\register\index.html";i:1522771403;s:77:"D:\xampp\htdocs\tp_shop\public/../application/shopper\view\Public\header.html";i:1522766184;s:77:"D:\xampp\htdocs\tp_shop\public/../application/shopper\view\Public\footer.html";i:1522769662;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:78:"D:\xampp\htdocs\tp_shop\public/../application/shopper\view\register\index.html";i:1522841627;s:77:"D:\xampp\htdocs\tp_shop\public/../application/shopper\view\Public\footer.html";i:1522839327;}*/ ?>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -25,6 +25,7 @@
 <![endif]-->
 <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdn.bootcss.com/normalize/8.0.0/normalize.min.css" rel="stylesheet">
+<link href="__STATIC__/uploadify/uploadify.css">
 	<title>商户注册页面</title>
 
 
@@ -114,9 +115,10 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-md-3" for="name"><span class="c-red">*</span>商户LOGO：</label>
+					<label class="control-label col-md-3" for="logo_val"><span class="c-red">*</span>商户LOGO：</label>
 					<div class="col-md-4">
-						<input type="file" name="logo" id="upload_logo">
+						<input type="file" name="upload_logo" id="upload_logo">
+						<input type="hidden" name="logo_val" id="logo_val" value="">
 						<div style="display: none;">
 							<img src="" id="upload_logo_img" width="150" height="150">
 							<span class="help-block">缩略图</span>
@@ -127,6 +129,7 @@
 					<label class="control-label col-md-3" for="name"><span class="c-red">*</span>营业执照：</label>
 					<div class="col-md-4">
 						<input type="file" name="license" id="upload_license" multiple="true">
+						<input type="hidden" name="license_val" id="license_val" value="">
 						<div style="display: none">
 							<img src="" id="upload_license_img" width="150" height="150">
 							<span class="help-block">缩略图</span>
@@ -231,19 +234,25 @@
 			</form>
 		</div>
 	</div>
+
 	<!--_footer 作为公共模版分离出去-->
-<script type="text/javascript" src="__STATIC__/admin/hui/lib/jquery/1.9.1/jquery.min.js"></script> 
-<script type="text/javascript" src="__STATIC__/admin/hui/lib/layer/2.4/layer.js"></script>
-<script type="text/javascript" src="__STATIC__/admin/hui/static/h-ui/js/H-ui.min.js"></script>
-<script type="text/javascript" src="__STATIC__/admin/hui/static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
-<script src="__STATIC__/shopper/common.js"></script>
+<!-- <script type="text/javascript" src="__STATIC__/admin/hui/lib/jquery/1.9.1/jquery.min.js"></script>  -->
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="__STATIC__/shopper/js/common.js"></script>
+
+
 
 	<script type="text/javascript" src="__STATIC__/ueditor/ueditor.config.js"></script>
 	<script type="text/javascript" src="__STATIC__/ueditor/ueditor.all.js"></script>
+	<script src="__STATIC__/uploadify/jquery.uploadify.min.js"></script>
+	<script src="__STATIC__/shopper/js/image.js"></script>
 	<script>
 		var SCOPE = {
-			city_url : "<?php echo url('api/City/getCity'); ?>",
-			cate_url : "<?php echo url('api/Category/getCate'); ?>",
+			'city_url' : "<?php echo url('api/City/getCity'); ?>",
+			'cate_url' : "<?php echo url('api/Category/getCate'); ?>",
+			'upload_url' : "<?php echo url('api/Image/upload'); ?>",
+			'swf'	: "__STATIC__/uploadify/uploadify.swf",
 		}
 	</script>
 	<script type="text/javascript">

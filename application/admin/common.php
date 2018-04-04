@@ -1,14 +1,4 @@
 <?php
-//ajax返回给前端，数据以json格式传输
-function show($status, $message, $data=array()) {
-	$result = array(
-		'status'	=> $status,
-		'message'	=> $message,
-		'data'		=> $data
-	);
-	exit(json_encode($result));
-}
-
 
 /**
  * Function: doCurl
