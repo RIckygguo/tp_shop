@@ -75,4 +75,15 @@ class Category extends Model
 	public function softDelete($where) {
 		return $this->where($where)->delete(); 
 	}
+
+	/**
+	 * Function: getCateName
+	 * Writer: RickyGuo
+	 * Date: 2018-4-6
+	 * Description: 通过id获取cate的名字
+	 * @param 
+	 **/
+	public function getCateName($id) {
+		return $this->where(['id' => $id])->column('name');
+	}
 }

@@ -1,4 +1,30 @@
-﻿{include file="Public/header" /}
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:73:"D:\xampp\htdocs\tp_shop\public/../application/admin\view\index\index.html";i:1522997504;s:75:"D:\xampp\htdocs\tp_shop\public/../application/admin\view\Public\header.html";i:1521882563;s:75:"D:\xampp\htdocs\tp_shop\public/../application/admin\view\public\footer.html";i:1521010733;}*/ ?>
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<link rel="Bookmark" href="/favicon.ico" >
+<link rel="Shortcut Icon" href="/favicon.ico" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="lib/html5shiv.js"></script>
+<script type="text/javascript" src="lib/respond.min.js"></script>
+<![endif]-->
+<link rel="stylesheet" type="text/css" href="__STATIC__/admin/hui/static/h-ui/css/H-ui.min.css" />
+<link rel="stylesheet" type="text/css" href="__STATIC__/admin/hui/static/h-ui.admin/css/H-ui.admin.css" />
+<link rel="stylesheet" type="text/css" href="__STATIC__/admin/hui/lib/Hui-iconfont/1.0.8/iconfont.css" />
+<link rel="stylesheet" type="text/css" href="__STATIC__/admin/hui/static/h-ui.admin/skin/default/skin.css" id="skin" />
+<link rel="stylesheet" type="text/css" href="__STATIC__/admin/hui/static/h-ui.admin/css/style.css" />
+<link rel="stylesheet" type="text/css" href="__STATIC__/admin/css/common.css" />
+<!--[if IE 6]>
+<script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script>
+<![endif]-->
+<title>O2O管理平台</title>
+</head>
 <body>
 <header class="navbar-wrapper">
 	<div class="navbar navbar-fixed-top">
@@ -50,7 +76,7 @@
 			<dt><i class="Hui-iconfont">&#xe616;</i>分类管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a data-href="{:url('Category/index')}" data-title="生活服务分类" href="javascript:void(0)">生活服务分类</a></li>
+					<li><a data-href="<?php echo url('Category/index'); ?>" data-title="生活服务分类" href="javascript:void(0)">生活服务分类</a></li>
 			</ul>
 		</dd>
 	</dl>
@@ -58,7 +84,7 @@
 			<dt><i class="Hui-iconfont">&#xe643;</i> 城市管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a data-href="{:url('City/index')}" data-title="城市分类" href="javascript:void(0)">城市分类</a></li>
+					<li><a data-href="<?php echo url('City/index'); ?>" data-title="城市分类" href="javascript:void(0)">城市分类</a></li>
 			</ul>
 		</dd>
 	</dl>
@@ -66,8 +92,8 @@
 			<dt><i class="Hui-iconfont">&#xe620;</i> 商户管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a data-href="{:url('Shop/index')}" data-title="商户列表" href="javascript:void(0)">商户列表</a></li>
-					<li><a data-href="{:url('Shop/apply')}" data-title="商户入驻审核" href="javascript:void(0)">商户入驻审核</a></li>
+					<li><a data-href="<?php echo url('Shop/index'); ?>" data-title="商户列表" href="javascript:void(0)">商户列表</a></li>
+					<li><a data-href="<?php echo url('Shop/apply'); ?>" data-title="商户入驻审核" href="javascript:void(0)">商户入驻审核</a></li>
 			</ul>
 		</dd>
 	</dl>
@@ -147,7 +173,7 @@
 	<div id="iframe_box" class="Hui-article">
 		<div class="show_iframe">
 			<div style="display:none" class="loading"></div>
-			<iframe scrolling="yes" frameborder="0" src="{:url('index/welcome')}"></iframe>
+			<iframe scrolling="yes" frameborder="0" src="<?php echo url('index/welcome'); ?>"></iframe>
 	</div>
 </div>
 </section>
@@ -159,7 +185,11 @@
 </ul>
 </div>
 
-{include file="public/footer" /}
+<!--_footer 作为公共模版分离出去-->
+<script type="text/javascript" src="__STATIC__/admin/hui/lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="__STATIC__/admin/hui/lib/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="__STATIC__/admin/hui/static/h-ui/js/H-ui.min.js"></script>
+<script type="text/javascript" src="__STATIC__/admin/hui/static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
 <!--请在下方写此页面业务相关的脚本-->
 <script type="text/javascript" src="__STATIC__/admin/hui/lib/jquery.contextmenu/jquery.contextmenu.r2.js"></script>
 <script type="text/javascript">

@@ -47,3 +47,12 @@ function doCurl($url, $type=0, $data=[]) {
 	curl_close($ch);
 	return $output;
 }
+
+function pagination($obj) {
+	if(!$obj) {
+		return '';
+	}
+	else 
+		return '<div class="cl pd-5 bg-1 bk-gray mt-20 tp-shop">'. $obj->render() . '</div>';
+}
+

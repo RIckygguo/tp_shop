@@ -106,4 +106,15 @@ class City extends Model {
 	public function updateRecord($data) {
 		return $this->save($data, ['id' => $data['id']]);
 	}
+
+	/**
+	 * Function: getCityName
+	 * Writer: RickyGuo
+	 * Date: 2018-4-6
+	 * Description: 获取城市名
+	 * @param id 城市id
+	 **/
+	public function getCityName($id) {
+		return $this->where(['id'=>$id])->column('name');
+	}
 }

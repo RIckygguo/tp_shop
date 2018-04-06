@@ -68,7 +68,7 @@ function editRecord(title,url,id,w,h){
  * @param id 记录id
  * @url change_status_url 后台中改变状态的url
  **/
-function stopStatus(obj,id){
+function stopStatus(obj,id, scene=0){
 	layer.confirm('确认要改为审核吗？', function(index){
 		var postData = {
 			'id' : id,
@@ -77,8 +77,13 @@ function stopStatus(obj,id){
 		url = SCOPE.change_status_url;
 		$.post(url, postData, function(result) {
 			if(result.status == 0) {
-				$(obj).parents("tr").find(".td-status").html('<a style="text-decoration: none;" href="javascript:;" onClick="startStatus(this,100)" title="通过审核"><span class="label radius label-warning">待审</span></a>');
-				$(obj).remove();
+				if(scene == 0) {
+					$(obj).parents("tr").find(".td-status").html('<a style="text-decoration: none;" href="javascript:;" onClick="startStatus(this,100)" title="通过审核"><span class="label radius label-warning">待审</span></a>');
+					$(obj).remove();
+				}
+				else if(scene == 1) {
+					$(obj).parents('tr').remove();
+				}
 				layer.msg('状态为审核!',{icon: 1,time:1000});
 			}
 			else {
@@ -96,9 +101,10 @@ function stopStatus(obj,id){
  * Description: 将记录改为启用状态
  * @param obj 当前对象
  * @param id 记录id
+ * @param scene 场景，根据不同场景回调函数不同
  * @url change_status_url 后台中改变状态的url
  **/
-function startStatus(obj,id){
+function startStatus(obj,id, scene){
 	layer.confirm('确认要通过审核吗？',function(index){
 
 		var postData = {
@@ -108,8 +114,13 @@ function startStatus(obj,id){
 		url = SCOPE.change_status_url;
 		$.post(url, postData, function(result) {
 			if(result.status == 0) {
-				 $(obj).parents("tr").find(".td-status").html('<a style="text-decoration: none;" href="javascript:;" onClick="stopStatus(this,100)" title="下审"><span class="label radius label-success">正常</span></a>');
-				$(obj).remove();
+				if(scene == 0) {
+					$(obj).parents("tr").find(".td-status").html('<a style="text-decoration: none;" href="javascript:;" onClick="stopStatus(this,100)" title="下审"><span class="label radius label-success">正常</span></a>');
+					$(obj).remove();
+				}
+				else if(scene == 1){
+					$(obj).parents('tr').remove();
+				}
 				layer.msg('已启用!', {icon: 1,time:1000});
 			}
 			else {
