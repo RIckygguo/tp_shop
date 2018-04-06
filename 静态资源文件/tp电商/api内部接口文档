@@ -1,7 +1,7 @@
 api内部接口文档
 
 第三方：
-发送邮件：\Email::sendEmail($sendto, $title, $content);
+发送邮件：\Email::sendEmail($sendto, $from,$title, $content);
 获取静态地图图片：\Map::getStaticMap('$address');
 获取经纬度：\Map::getLngLat($address)
 

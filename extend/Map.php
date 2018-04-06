@@ -25,11 +25,10 @@ class Map {
 			'ak'	=> config('map.ak'),
 		];
 		$api_url = config('map.baidu_map_url').config('map.geocoder')."?".http_build_query($data);
-		dump($api_url);
 		// 1.file_get_contents($url)
 		// 2.curl
 		$res = doCurl($api_url);
-		return $res;
+		return json_decode($res,true);
 	}
 
 

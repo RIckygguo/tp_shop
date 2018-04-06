@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:78:"D:\xampp\htdocs\tp_shop\public/../application/shopper\view\register\index.html";i:1522841627;s:77:"D:\xampp\htdocs\tp_shop\public/../application/shopper\view\Public\footer.html";i:1522839327;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:78:"D:\xampp\htdocs\tp_shop\public/../application/shopper\view\register\index.html";i:1522981188;s:77:"D:\xampp\htdocs\tp_shop\public/../application/shopper\view\Public\footer.html";i:1522839327;}*/ ?>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -75,7 +75,7 @@
 		</div>
 		<div class="content row">
 			<h2>基本信息</h2>
-			<form class="form-horizontal">
+			<form class="form-horizontal" action="<?php echo url('Register/add'); ?>" method="post">
 				<div class="form-group">
 					<label class="control-label col-md-3" for="name"><span class="c-red">*</span>商户名称：</label>
 					<div class="col-md-4">
@@ -109,9 +109,11 @@
 						</select>
 					</div>
 					<div class="col-md-3">
-						<select name="se_cate_id" class="form-control" id="se_cate_id">
+						<!-- <select name="se_cate_id" class="form-control" id="se_cate_id">
 							<option value="0">--请选择--</option>
-						</select>
+						</select> -->
+						<div name="se_cate_id" id="se_cate_id">
+						</div>
 					</div>
 				</div>
 				<div class="form-group">
@@ -139,7 +141,7 @@
 				<div class="form-group">
 					<label class="control-label col-md-3" for="introduce"><span class="c-red">*</span>商户介绍：</label>
 					<div class="col-md-6">
-						<script type="text/javascript" id="editor1"></script>
+						<script type="text/javascript" id="editor1" name="introduce"></script>
 					</div>
 				</div>
 				<div class="form-group">
@@ -206,7 +208,7 @@
 				<div class="form-group">
 					<label class="control-label col-md-3" for="description"><span class="c-red">*</span>门店介绍：</label>
 					<div class="col-md-6">
-						<script type="text/javascript" id="editor2"></script>
+						<script type="text/javascript" id="editor2" name="description"></script>
 					</div>
 				</div>
 				<h2>管理员账号信息</h2>
@@ -220,12 +222,6 @@
 					<label class="control-label col-md-3" for="password"><span class="c-red">*</span>密码：</label>
 					<div class="col-md-4">
 						<input type="password" name="password" id="password" class="form-control">
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="control-label col-md-3" for="password_comfirm"><span class="c-red">*</span>确认密码：</label>
-					<div class="col-md-4">
-						<input type="password_comfirm" name="password_comfirm" id="password_comfirm" class="form-control">
 					</div>
 				</div>
 				<div class="col-md-4 col-md-offset-3">

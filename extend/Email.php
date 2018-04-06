@@ -8,7 +8,7 @@ use PHPMailer\PHPMailer\Exception;
 require '../vendor/autoload.php';
 
 class Email {
-	public static function sendEmail($address, $subject, $content) {
+	public static function sendEmail($address, $from,$subject, $content) {
 		$mail = new PHPMailer(true);                              // Passing `true` enables exceptions
 		try {
 			date_default_timezone_set("PRC");
@@ -24,7 +24,7 @@ class Email {
 		    $mail->Port = config('email.port');                                   // TCP port to connect to
 
 		    //Recipients
-		    $mail->setFrom(config('email.username'), 'Mailer');
+		    $mail->setFrom(config('email.username'), $from);
 		    $mail->addAddress($address, $address);     // Add a recipient
 		    // $mail->addAddress('ellen@example.com');               // Name is optional
 		    // $mail->addReplyTo('info@example.com', 'Information');
@@ -42,7 +42,6 @@ class Email {
 		    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
 		    $mail->send();
-		    echo 'Message has been sent';
 		} catch (Exception $e) {
 		    echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
 		}

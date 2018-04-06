@@ -169,9 +169,21 @@ uploader 后台上传接口
 使用think自带的类库Request、File
 用request的file获取上传文件，然后在用move移动到指定目录，然后返回目录路径
 
-关于复用：
-所有复用的js，css代码放在public/static/下的js/common.js和css/common.css
-所有需要抛送的url放在SCOPE数组中，SCOPE放置在每个页面下的JavaScript中。只要函数中调用的url符合SCOPE中的url即可。
+
+
+path合成与分解
+有子类选择时，我们在path中设置一下分隔符
+1.比如说，在城市中我们用,分割一级和二级
+2.在分类中，用,分割一级和二级，用|分割二级同时选择的
+分类二级中因为获取的是数组，我们可以用implode吧数组连接一起
+然后获取，可以使用preg_match进行匹配,，然后在用explode分割
+
+账户信息校验：
+自动随机生成code，保存至数据库。然后与密码一起md5加密。
+
+url：
+在同个域中可以用{:url}
+但是在邮件中，是属于不同域，所以需要使用request()->domain().url('shopper/register/watting')
 
 注意：
 通过select获取的数据是以数组形式返回，哪怕获取的数据只有一条
@@ -184,5 +196,19 @@ select获取到的数据有一定的格式，所以如果想使用column进行�
 需要将application url_common_param改为true
 
 
+
+
 需要优化的地方：
 修改记录中:当一级分类时，选择项不应该出现相同名字的选项
+入驻申请中，可以将账号重复验证放置异步验证
+入驻中，可以上传多张图片的营业执照
+禁止表单重复提交:https://blog.csdn.net/myhuashengmi/article/details/52694077
+
+关于复用：
+所有复用的js，css代码放在public/static/下的js/common.js和css/common.css
+所有需要抛送的url放在SCOPE数组中，SCOPE放置在每个页面下的JavaScript中。只要函数中调用的url符合SCOPE中的url即可。
+model层代码复用：
+因为某些模型层用的方法大数都是相同的，所以可以利用继承进行复用
+首先创建一个BaseModel，里面实现方法，然后其他模型来继承
+paginate也可以进行封装复用
+在common.php中实现pagination方法，参数是obj，即模板变量。然后在模板中调用{:pagination($cates)};
