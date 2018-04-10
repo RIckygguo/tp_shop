@@ -49,4 +49,14 @@ class Shop extends BaseModel {
 		];
 		return $this->where($data)->count();
 	}
+	/**
+	 * Function: getStatus
+	 * Writer: RickyGuo
+	 * Date: 2018-4-10
+	 * Description: 获取商店状态
+	 * @param 
+	 **/
+	public function getStatus($id) {
+		return $this->where(['id' => $id])->column('status');
+	}
 }

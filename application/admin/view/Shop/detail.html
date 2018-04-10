@@ -186,11 +186,20 @@
 						{$loc.description}
 					</div>
 				</div>
-				<div class="col-md-4 col-md-offset-3">
+				<div class="col-md-4 col-md-offset-2">
 					<button class="btn btn-primary radius btn-block "  onclick="startStatus(this, {$shop.id}, 2)">通过审核</button>
+				</div>
+				<div class="col-md-4">
+					<button class="btn btn-primary radius btn-block btn-danger"  onclick="deleteStatus(this, {$shop.id}, 2)">拒绝通过</button>
 				</div>
 			</div>
 		</div>
 	</div>
+	{include file="Public/footer" /}
+	<script type="text/javascript">
+		SCOPE = {
+			change_status_url : "{:url('Shop/changeStatus')}"
+		}
+	</script>
 </body>
 </html>

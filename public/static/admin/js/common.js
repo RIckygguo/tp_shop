@@ -24,7 +24,7 @@ function addRecord(title,url,w,h){
   * @param id 记录id
   * @url change_status_url 后台中改变状态的url
   **/ 
-function deleteStatus(obj, id) {
+function deleteStatus(obj, id, scene=0) {
 	layer.confirm('确认要禁用吗?', function(index) {
 		var postData = {
 			'id' : id,
@@ -33,8 +33,23 @@ function deleteStatus(obj, id) {
 		url = SCOPE.change_status_url;
 		$.post(url, postData, function(result) {
 			if(result.status == 0) {
-				$(obj).parents("tr").find(".td-status").html('<a style="text-decoration: none;" href="javascript:;" onClick="stopStatus(this,100)" title="通过审核"><span class="label radius">禁用</span></a>');
-				layer.msg('已禁用', {icon:1, time:1000});
+				if(scene == 0) {
+					$(obj).parents("tr").find(".td-status").html('<a style="text-decoration: none;" href="javascript:;" onClick="stopStatus(this,100)" title="通过审核"><span class="label radius">禁用</span></a>');
+					layer.msg('已禁用', {icon:1, time:1000});
+				}
+				else if(scene == 1){
+					$(obj).parents('tr').remove();
+					layer.msg('已禁用', {icon:1, time:1000});
+				}
+				else if(scene == 2) {
+					  layer.msg('已禁用', {icon:1, time:1000});
+					  setInterval(function() {
+					    var index = parent.layer.getFrameIndex(window.name);
+					    parent.$('.btn-refresh').click();
+					    parent.location.reload();
+					    parent.layer.close(index);
+					}, 1000);
+				}				
 			}
 			else {
 				layer.msg('禁用失败', {icon:2, time:1000});
@@ -104,7 +119,7 @@ function stopStatus(obj,id, scene=0){
  * @param scene 场景，根据不同场景回调函数不同
  * @url change_status_url 后台中改变状态的url
  **/
-function startStatus(obj,id, scene){
+function startStatus(obj,id, scene=0){
 	layer.confirm('确认要通过审核吗？',function(index){
 
 		var postData = {
@@ -120,6 +135,15 @@ function startStatus(obj,id, scene){
 				}
 				else if(scene == 1){
 					$(obj).parents('tr').remove();
+				}
+				else if(scene == 2) {
+					  layer.msg('已启用', {icon:1, time:1000});
+					  setInterval(function() {
+					    var index = parent.layer.getFrameIndex(window.name);
+					    parent.$('.btn-refresh').click();
+					    parent.location.reload();
+					    parent.layer.close(index);
+					}, 1000);
 				}
 				layer.msg('已启用!', {icon: 1,time:1000});
 			}

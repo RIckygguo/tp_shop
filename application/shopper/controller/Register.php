@@ -138,6 +138,14 @@ class Register extends Controller {
 	}
 
 	public function waitting() {
-		echo 'test';
+		$id = input('id', 0, 'intval');
+		$res = model('Shop')->getStatus($id);
+		if($res) {
+			$this->assign('status', $res[0]);
+		}
+		else {
+			$this->assign('status', -2);
+		}
+		return $this->fetch();
 	}
 }
